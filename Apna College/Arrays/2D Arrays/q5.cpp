@@ -1,10 +1,11 @@
+// Multiplication of two matrices
+
 #include <iostream>
 using namespace std;
 int main()
 {
     int n, m, o;
-    cin >> n >> m;
-    cin >> m >> o;
+    cin >> n >> m >> o;
     int a[n][m];
     int b[m][o];
     for (int i = 0; i < n; i++)
@@ -15,33 +16,37 @@ int main()
         }
     }
 
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < m; i++)
     {
-        for (int j = 0; j < m; j++)
+        for (int j = 0; j < o; j++)
         {
             cin >> b[i][j];
         }
     }
-    int ans[n][m];
 
-    cout << endl;
-    for (int i = 0; i < m; i++)
+    int ans[n][o];
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < o; j++)
         {
-            int sum = 0;
-            for (int k = 0; k < n; k++)
-            {
-                sum += a[i][k] * b[k][j];
-            }
-            ans[i][j] = sum;
+            ans[i][j] = 0;
         }
-        cout << endl;
+    }
+    cout << endl;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < o; j++)
+        {
+            for (int k = 0; k < m; k++)
+            {
+                ans[i][j] += a[i][k] * b[k][j];
+            }
+        }
     }
 
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < m; j++)
+        for (int j = 0; j < o; j++)
         {
             cout << ans[i][j] << " ";
         }
